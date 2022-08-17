@@ -19,5 +19,8 @@ def plusOne(digits):
     return output
 
 
+if __name__ == "__main__":
+    plusOne()
+
 print(plusOne([9]))  # -> [1,0]
 print(plusOne([1, 2, 3]))  # -> [1,2,4]
