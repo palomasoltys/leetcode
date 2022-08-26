@@ -22,7 +22,7 @@ def maxProfit(prices):
     while r < len(prices):
         # if the price of the sell(right) pointer is greater than the buy(left) pointer,
         # store the profit (difference between them) and check if profit is greater than
-        # the max_profit, if its, the max_profit will now be the profit
+        # the max_profit, if yes, the max_profit will now be the profit
         if prices[l] < prices[r]:
             profit = prices[r] - prices[l]
             max_profit = max(profit, max_profit)
