@@ -21,27 +21,29 @@
 # aaab    s = 'aaab' (first query)
 # baa     s = 'baa'  (second query)
 # aaa     s = 'aaa'  (third query)
+# sadkas
 
 def palindromeIndex(s):
 
     if s == s[::-1]:
         return -1
 
-    l, r = 0, len(s) - 1
+    left, right = 0, len(s) - 1
 
-    while l < r:
-        while s[l] != s[r]:
-            p = s[:l]+s[l+1:]
-            t = s[:r]+s[r+1:]
+    while left < right:
+        while s[left] != s[right]:
+            p = s[:left]+s[left+1:]
+            t = s[:right]+s[right+1:]
             if p == p[::-1]:
-                return l
+                return left
             elif t == t[::-1]:
-                return r
-            l += 1
-            r -= 1
-        l += 1
-        r -= 1
+                return right
+            left += 1
+            right -= 1
+        left += 1
+        right -= 1
     return -1
 
 
 print(palindromeIndex("amorrooma"))
+print(palindromeIndex("sadkas"))  # -> 2 "sakas"
