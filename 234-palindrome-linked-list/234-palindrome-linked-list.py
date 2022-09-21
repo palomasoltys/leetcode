@@ -12,14 +12,3 @@ class Solution:
             curr = curr.next
         return list1 == list1[::-1]
         
-#         list1 = head
-#         prev, curr = None, head
-        
-#         while curr:
-#             nxt = curr.next
-#             curr.next = prev
-#             prev = curr
-#             curr = nxt
-            
-#         return head == list1
-        
