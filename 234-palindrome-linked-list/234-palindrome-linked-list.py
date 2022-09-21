@@ -5,6 +5,7 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
         curr = head
         list1 = []
         while curr:
