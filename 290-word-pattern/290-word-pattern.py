@@ -5,9 +5,9 @@ class Solution:
             return False
         hash_words = {}
         for i in range(len(pattern)):
-            if pattern[i] in hash_words.keys() and hash_words[pattern[i]] != s[i]:           
+            if pattern[i] in hash_words and hash_words[pattern[i]] != s[i]:           
                 return False
-            if pattern[i] not in hash_words.keys() and s[i] in hash_words.values():
+            if pattern[i] not in hash_words and s[i] in hash_words.values():
                 return False
             hash_words[pattern[i]] = s[i]
         return True
