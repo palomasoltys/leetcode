@@ -1,33 +1,12 @@
 def dailyTemperatures(temperatures):
-    if len(temperatures) == 1:
-        return [0]
-    # create a res variable
-    res = []
-    # iterate through temperatures
-    for i in range(len(temperatures)-1):
-        # if curr el is smaller than next el
-        if temperatures[i] < temperatures[i+1]:
-            # append 1 to the result
-            res.append(1)
-        # else create a count variable starting at one
-        else:
-            count = 1
-            # create a j variable to loop through the rest of the array
-            j = i+1
-            # while next el is not greater than curr el
-            while j < len(temperatures) and temperatures[j] <= temperatures[i]:
-                # increment count
-                count += 1
-                j += 1
-            # append count to the result
-            if (j == len(temperatures)):
-                res.append(0)
-            else:
-                res.append(count)
-        if i+1 == len(temperatures)-1:
-            res.append(0)
+    res = [0] * len(temperatures)
+    stack = []  # pair: [temp, index]
 
-    # return result
+    for i, t in enumerate(temperatures):
+        while stack and t > stack[-1][0]:
+            stackT, stackInd = stack.pop()
+            res[stackInd] = i - stackInd
+        stack.append((t, i))
     return res
 
 
