@@ -8,44 +8,43 @@ def lemonadeChange(bills):
     if bills[0] > 5:
         return False
     # create a change array variable to store the change
-    change = []
+    change = {}
     # iterate through bills
     for bill in bills:
         # if bills equal to 5, add to the change array
         if bill == 5:
-            change.append(bill)
+            change[bill] = change.get(bill, 0) + 1
         # if bills equal to 10, check if there is 5 in change array
         elif bill == 10:
-            if 5 in change:
+            if 5 in change and change[5] > 0:
                 # if yes, pop from change and add 10 to change
-                change.remove(5)
-                change.append(bill)
+                change[5] -= 1
+                change[bill] = change.get(bill, 0) + 1
             # if not, return false
             else:
                 return False
         # if bills equal to 20, check if there is 5 in change
         elif bill == 20:
-            if 5 not in change:
+            if 5 not in change or change[5] <= 0:
                 # if not, return false
                 return False
             # if yes, check if there is a 10, if yes pop 10 and 5 and add 20 to change
             else:
-                if 10 in change:
-                    change.remove(10)
-                    change.remove(5)
-                    change.append(bill)
+                if 10 in change and change[10] > 0:
+                    change[10] -= 1
+                    change[5] -= 1
+                    change[bill] = change.get(bill, 0) + 1
                 # if yes, check to see if there is another 5, if yes pop both 5 and add 20
-                elif change.count(5) > 2:
-                    change.remove(5)
-                    change.remove(5)
-                    change.remove(5)
-                    change.append(bill)
+                elif change[5] > 2:
+                    change[5] -= 3
+                    change[bill] = change.get(bill, 0) + 1
                 else:
                     return False
     # return true
     return True
 
 
+print(lemonadeChange([5, 5, 10, 10, 20]))  # false
 print(lemonadeChange([5, 5, 5, 10, 5, 5, 10, 20, 20, 20]))  # false
 print(lemonadeChange([5, 5, 5, 5, 20, 20, 5, 5, 20, 5]))  # false
 print(lemonadeChange([5, 5, 5, 20, 5, 5, 5, 20, 5, 5,
