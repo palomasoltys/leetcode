@@ -12,12 +12,13 @@
 # Ashe is poisoned for seconds 1, 2, and 3, which is 3 seconds in total.
 
 def findPoisonedDuration(timeSeries, duration):
-    seconds = set()
-    for n in timeSeries:
-        time = n+(duration-1)
-        for i in range(n, time+1):
-            seconds.add(i)
-    return len(seconds)
+    res = 0
+    for i in range(len(timeSeries)-1):
+        if timeSeries[i+1] - timeSeries[i] > duration - 1:
+            res += duration
+        else:
+            res += timeSeries[i+1] - timeSeries[i]
+    return res + duration
 
 
 print(findPoisonedDuration([1, 2], 2))  # 3
