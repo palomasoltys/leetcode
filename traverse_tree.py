@@ -79,7 +79,7 @@ def max_value(node):
 print("Max value: ")
 print(max_value(root))
 
-# 3. Write a function that return true if the target exists otherwise false
+# 3. Write a function that return true if the target exists in the given binary tree otherwise false
 
 
 def target_exist(node, target):
@@ -97,3 +97,20 @@ def target_exist(node, target):
 
 print("Target exists? ")
 print(target_exist(root, 4))
+
+# 4. Write a function that returns the sum of all values in the given binary tree
+
+
+def sum_tree(node):
+
+    if node is None:
+        return 0
+
+    left = sum_tree(node.left)
+    right = sum_tree(node.right)
+
+    return left + right + node.val
+
+
+print("Sum of all values are: ")
+print(sum_tree(root))
