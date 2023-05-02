@@ -114,3 +114,22 @@ def sum_tree(node):
 
 print("Sum of all values are: ")
 print(sum_tree(root))
+
+# 5. Write a function that returns the sum of all even values in the given binary tree
+
+
+def sum_even_numbers(node):
+    if node is None:
+        return 0
+
+    left = sum_even_numbers(node.left)
+    right = sum_even_numbers(node.right)
+
+    if node.val % 2 == 0:
+        return node.val + left + right
+    else:
+        return left + right
+
+
+print("The sum of all even values are: ")
+print(sum_even_numbers(root))
